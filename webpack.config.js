@@ -27,6 +27,11 @@ module.exports = {
       }
     ]
   },
+  stats: {
+    preset: 'normal',
+    moduleTrace: true,
+    errorDetails: true,
+  },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({ template: "index.html" })

@@ -5,10 +5,10 @@
     >
         <li 
             v-for="(item, index) in listSource" 
-            :key="item.id || index"
+            :key="index"
             class="list__item"
             :class="itemClass"
-            @click="handleItemClick(index)"
+            @click="handleItemClick(Number(index))"
         >
             <a
                 :href="item.href"
@@ -19,33 +19,30 @@
             </a>
 
             <img
-                v-if="hasSubmenu(item)"
+                v-if="item?.submenu?.length"
                 class="list__icon"
-                :class="{ rotated: isSubmenuActive(index) }"
+                :class="{ rotated: isSubmenuActive(Number(index)) }"
                 src="@/assets/icons/ArrowRight.svg"
                 alt="Expand submenu"
             />
                 
             <slot
-                v-if="isSubmenuActive(index)"
+                v-if="isSubmenuActive(Number(index))"
                 name="submenumobile"
                 :index="index"
-                :class="'list__submenu--mobile'"
             />
         </li>
     </ul>
 </template>
 
 <script setup lang="ts">
-    import type { Ref } from 'vue';
     import type { IListSource, IListSourceSub } from '@/types/menu';
-
     import { computed } from 'vue';
 
     interface Props {
         type: string;
         listSource: IListSource[] | IListSourceSub[] | [];
-        submenuLength: number,
+        submenuLength: number;
         activeSubmenuIdx: number;
     }
 
@@ -67,10 +64,6 @@
         'list__link--secondary': isSecondaryType.value,
         'list__link--secondary--mobile': isSecondaryMobileType.value
     }));
-
-    function hasSubmenu(item: IListSource | IListSourceSub): boolean {
-        return 'submenu' in item && !!(item?.submenu?.length);
-    }
 
     function isSubmenuActive(index: number): boolean {
         return props.activeSubmenuIdx === index && props.submenuLength > 0;

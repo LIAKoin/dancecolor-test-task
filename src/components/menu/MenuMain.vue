@@ -13,12 +13,10 @@
             >
                 <template 
                     v-if="isNested"
-                    #submenumobile
                 >
                     <MenuList 
                         type="secondary--mobile"
                         :list-source="activeSubmenu"
-                        :submenu-length="activeSubmenu.length"
                         :active-submenu-idx="activeSubmenuIdx"
                     />
                 </template>

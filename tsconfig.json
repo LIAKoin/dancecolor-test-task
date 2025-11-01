@@ -10,7 +10,14 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] },
-    "types": ["webpack-env"]
+    "types": ["node"],
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.spec.ts",
+    "**/*.vue.ts"
+  ]
 }
