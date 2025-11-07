@@ -12,10 +12,10 @@
                 @set-active-submenu="handleSubmenuActivation"
             >
                 <template 
-                    v-if="isNested"
-                    #submenumobile
+                    #mobilesubmenu
                 >
                     <MenuList 
+                        v-if="isNested"
                         type="secondary--mobile"
                         :list-source="activeSubmenu"
                         :active-submenu-idx="activeSubmenuIdx"

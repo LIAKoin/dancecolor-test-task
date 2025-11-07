@@ -28,8 +28,7 @@
                 
             <slot
                 v-if="isSubmenuActive(Number(index))"
-                name="submenumobile"
-                :index="index"
+                name="mobilesubmenu"
             />
         </li>
     </ul>
