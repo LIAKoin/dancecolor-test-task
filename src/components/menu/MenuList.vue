@@ -19,7 +19,7 @@
             </a>
 
             <img
-                v-if="item?.submenu?.length"
+                v-if="'submenu' in item && item?.submenu?.length"
                 class="list__icon"
                 :class="{ rotated: isSubmenuActive(Number(index)) }"
                 src="@/assets/icons/ArrowRight.svg"
